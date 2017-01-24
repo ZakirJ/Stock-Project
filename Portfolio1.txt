@@ -2,13 +2,14 @@ import pandas as pd
 #written by ZakirJ
 
 
-data = pd.read_excel('portfolioDeposits.xlsx.xlsx')
+data = pd.read_excel('portfolioDeposits.xlsx')
 
+dvd = data['Notes']
 ShareCol = data['Shares']
 PriceCol = data['Price']
 
-sumA = 0
-for i in range(0, len(ShareCol)):
-    sumA+=(PriceCol[i]*ShareCol[i])
-    
-print(sumA)
+sum = 0
+for i in range(0, len(dvd)):
+    if dvd[i]!='dvd':
+        sum+= (ShareCol[i]*PriceCol[i])
+print(sum)
