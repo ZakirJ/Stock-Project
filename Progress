@@ -1,0 +1,40 @@
+import pandas as pd
+from yahoo_finance import Share
+#written by ZakirJ
+yahoo = Share('YHOO')
+apple=Share('AAPL')
+google=Share('GOOGL')
+yahoo.refresh()
+apple.refresh()
+google.refresh()
+y1=(yahoo.get_price())
+a1= (apple.get_price())
+g1= (google.get_price())
+print (y1)
+
+y1=float(y1)
+
+y1= (y1)*ShareCol[0]
+print(y1)
+a1=(a1)*14.298
+g1=(g1)*8.765
+
+tot=y1+a1+g1
+print tot
+
+#pprint(yahoo.get_historical('2016-06-29'))
+
+
+
+data = pd.read_excel('portfolioDeposits.xlsx')
+
+dvd = data['Notes']
+ShareCol = data['Shares']
+PriceCol = data['Price']
+
+#part 2
+sum = 0
+for i in range(0, len(dvd)):
+    if dvd[i]!='dvd':
+        sum+= (ShareCol[i]*PriceCol[i])
+print(sum)
